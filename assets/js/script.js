@@ -1,3 +1,4 @@
+var savedMovies = [];
 
 $(document).ready(function(){
 
@@ -33,6 +34,12 @@ $(document).ready(function(){
             url:urlMovie+"&s="+movie,
             success:function(data){
                 console.log(data.Search);
+
+                
+                
+                savedMovies.push(movie);
+
+                localStorage.setItem('movies', JSON.stringify(savedMovies));
                 
                 var i;
                 for(var i =0; i < data.Search.length; i++){
