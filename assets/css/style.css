@@ -5,3 +5,17 @@
     text-align: center;
     margin: 5px;
     }
+
+    form {
+        border: solid;
+        display: inline-block;
+    }
+
+    .form-group {
+        display: inline;
+    }
+
+   /* .histDiv {
+        display: inline;
+    }*/
+    
