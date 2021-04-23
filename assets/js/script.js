@@ -141,8 +141,9 @@ var apikey = "54e8fa38"
     listSearchHistory();
     
     function clearHistory() {
-        localStorage.clear();
+        localStorage.clear('movies');
         $('.histDiv').empty();
+        location.reload();
     }
     
     $('#clear').on('click', function() {
