@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
     var apikey = "54e8fa38"
@@ -5,11 +6,21 @@ $(document).ready(function(){
     $("#movieForm").submit(function(event){
         event.preventDefault()
 
+
         $("#main").empty()
 
         $("#main2").empty()
 
         var movie = $("#movie").val()
+
+        if (movie === '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Type in a movie title into the search bar.',
+              })
+            return;
+        }
 
         var result = " "
 
