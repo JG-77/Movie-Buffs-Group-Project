@@ -1,5 +1,7 @@
-var savedMovies = [];
+var savedMovies = JSON.parse(localStorage.getItem('movies')) || [];
 var formEl = $('#movieForm');
+var historyDiv = $('<div>');
+historyDiv.attr('class', 'histDiv');
 
 $(document).ready(function(){
 
@@ -38,8 +40,7 @@ $(document).ready(function(){
                 //local storage for search input
                 savedMovies.push(movie);
                 localStorage.setItem('movies', JSON.stringify(savedMovies));
-                var historyDiv = $('<div>');
-                historyDiv.attr('class', 'histDiv');
+               
                 $('.histDiv').empty();
 
                 //for loop for creating history buttons
@@ -118,32 +119,22 @@ $(document).ready(function(){
     })
 })
 
-
-
-
-
-
-
-/*function listSearchHistory() {
-    var savedMovies = JSON.parse(localStorage.getItem('movies')) || [];
+function listSearchHistory() {
+    
    
     for(i = 0; i < savedMovies.length; i++) {
         console.log(savedMovies)
         
-              
-      var historyDiv = document.createElement('div');
-      var historyEl = document.createElement('button');
-      historyEl.setAttribute('id', 'historyBtn');
-      var cityLink = document.createElement('a');
-  
-      searchHistory.appendChild(historyDiv);
-      historyDiv.appendChild(historyEl);
-      historyEl.appendChild(cityLink)
-      historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
-      cityLink.textContent = savedCities[i];
-      cityLink.setAttribute('data-city', savedCities[i]);
-      cityLink.classList = 'text-white';
+        var historyBtn = $('<button>')
+        var movieLink = $('<a>')
+
+        historyBtn.attr('id', 'historyBtn');
+        formEl.append(historyDiv);
+        historyDiv.append(historyBtn);
+        historyBtn.append(movieLink);
+
+        movieLink.text(savedMovies[i]);  
     }
   }
 
-  listSearchHistory();*/
+  listSearchHistory();
