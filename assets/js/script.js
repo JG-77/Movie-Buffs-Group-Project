@@ -1,11 +1,11 @@
+$(document).ready(function(){
+
 var savedMovies = JSON.parse(localStorage.getItem('movies')) || [];
 var formEl = $('#movieForm');
 var historyDiv = $('<div>');
+//var clearBtn = $('#clear');
 historyDiv.attr('class', 'histDiv');
-
-$(document).ready(function(){
-
-    var apikey = "54e8fa38"
+var apikey = "54e8fa38"
 
     $("#movieForm").submit(function(event){
         event.preventDefault()
@@ -48,16 +48,14 @@ $(document).ready(function(){
                     var historyBtn = $('<button>')
                     var movieLink = $('<a>')
 
-                    historyBtn.attr('id', 'historyBtn');
+                    historyBtn.attr('class', 'historyBtn');
                     formEl.append(historyDiv);
                     historyDiv.append(historyBtn);
                     historyBtn.append(movieLink);
 
                     movieLink.text(savedMovies[i]);
 
-                }
-
-                
+                }  
                 var i;
                 for(var i =0; i < data.Search.length; i++){
                     var poster = data.Search[i].Poster
@@ -82,7 +80,14 @@ $(document).ready(function(){
 
                 }
 
-            }
+            } /*, error: function() {
+                console.log('error')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Could not find movie title.',
+                  })
+            }*/ 
         })
 
         $.ajax({
@@ -111,30 +116,37 @@ $(document).ready(function(){
                      `;
                     
                     $("#main2").append(result)
-
                 }
 
             }
         })
     })
-})
-
-function listSearchHistory() {
     
-   
-    for(i = 0; i < savedMovies.length; i++) {
-        console.log(savedMovies)
-        
-        var historyBtn = $('<button>')
-        var movieLink = $('<a>')
-
-        historyBtn.attr('id', 'historyBtn');
-        formEl.append(historyDiv);
-        historyDiv.append(historyBtn);
-        historyBtn.append(movieLink);
-
-        movieLink.text(savedMovies[i]);  
+    function listSearchHistory() {
+        for(i = 0; i < savedMovies.length; i++) {
+            console.log(savedMovies)
+            
+            var historyBtn = $('<button>')
+            var movieLink = $('<a>')
+            
+            historyBtn.attr('class', 'historyBtn');
+            formEl.append(historyDiv);
+            historyDiv.append(historyBtn);
+            historyBtn.append(movieLink);
+            
+            movieLink.text(savedMovies[i]);  
+        }
     }
-  }
-
-  listSearchHistory();
+    
+    listSearchHistory();
+    
+    function clearHistory() {
+        localStorage.clear();
+        $('.histDiv').empty();
+    }
+    
+    $('#clear').on('click', function() {
+        console.log('click');
+        clearHistory();
+    })
+})
