@@ -26,7 +26,7 @@ var apikey = "54e8fa38"
 
         var result = " "
         //omdb api variable
-        var urlMovie = "http://www.omdbapi.com/?apikey="+apikey
+        var urlMovie = "https://www.omdbapi.com/?apikey="+apikey
         //wiki api variable
         var urlWiki = "https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch="
         //ajax api call for omdb
