@@ -23,6 +23,8 @@ form {
 
 #searchBtn {
     margin-left: 3px;
+    margin: 5px;
+    margin-top: 7px;
 }
 
 .histDiv {
@@ -31,8 +33,7 @@ form {
 }
 
 .historyBtn {
-color: white;
-background-color: blue;
+color: black;
 margin-top: 3px;
 margin-bottom: 3px;
 margin-left: 3px;
@@ -73,10 +74,9 @@ margin-left: 3px;
 }
 
 
-#clear {
-    background: rgb(66, 184, 221); 
+#clear { 
     color: white;
-
+    margin-top: 2px;
 }
 
 @media screen and (min-width: 768px) {

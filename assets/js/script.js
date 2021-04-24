@@ -1,14 +1,13 @@
 $(document).ready(function(){
-
+//variables
 var savedMovies = JSON.parse(localStorage.getItem('movies')) || [];
 var formEl = $('#movieForm');
 var historyDiv = $('<div>');
 historyDiv.attr('class', 'histDiv');
 var apikey = "54e8fa38"
-
+    //search button event
     $("#searchBtn").on("click", function(event){
         event.preventDefault()
-
 
         $("#main").empty()
 
@@ -26,28 +25,27 @@ var apikey = "54e8fa38"
         }
 
         var result = " "
-
+        //omdb api variable
         var urlMovie = "http://www.omdbapi.com/?apikey="+apikey
-
+        //wiki api variable
         var urlWiki = "https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch="
-        
+        //ajax api call for omdb
         $.ajax({
             method:'GET',
             url:urlMovie+"&s="+movie,
             success:function(data){
                 console.log(data.Search);
-                //local storage for search input
+                //conditional to prevent duplicate search
                 if(!savedMovies.includes(movie)) {
-                //return false;
+
                 savedMovies.push(movie);
-                localStorage.setItem('movies', JSON.stringify(savedMovies));
-                
+                localStorage.setItem('movies', JSON.stringify(savedMovies)); 
                 }
                 $('.histDiv').empty();
  
                 //for loop for creating history buttons
                 for(i = 0; i < savedMovies.length; i++) {
-                    var historyBtn = $('<button>')
+                    var historyBtn = $('<p>')
                     var movieLink = $('<a>')
 
                     historyBtn.attr('class', 'historyBtn');
@@ -59,6 +57,7 @@ var apikey = "54e8fa38"
 
                 }  
                 var i;
+                //loop for creating moving cards
                 for(var i =0; i < data.Search.length; i++){
                     var poster = data.Search[i].Poster
                     var movieTitle = data.Search[i].Title
@@ -83,18 +82,7 @@ var apikey = "54e8fa38"
                 }
 
             } 
-        })
-        /*.then(function () { //movie poster open
-            $(".movieImg").on("click", function (e) {
-              var movieName = $(this).siblings(".movie-title").text();
-              console.log(movieName);
-              getWiki(movieName);
-            });
-          });*/
-
-                //function getWiki(movie) {
-              // console.log(getWiki)
-              //function getWiki(movie)
+        })      //ajax api call for wiki information
               $.ajax({
                   method:'GET',
                   url:urlWiki+movie,
@@ -102,6 +90,7 @@ var apikey = "54e8fa38"
                       console.log(data.query.search);
                       
                     var i;
+                    //for loop for creating wiki snippets
                     for(var i =0; i < 5; i++){
                           var snippet = data.query.search[i].snippet
                           var wikiTitle = data.query.search[i].title
@@ -128,16 +117,12 @@ var apikey = "54e8fa38"
                     
                 });
     });
-    
-
-    
-
-    
+    //lists previous search history on page refresh
     function listSearchHistory() {
         for(i = 0; i < savedMovies.length; i++) {
             console.log(savedMovies)
             
-            var historyBtn = $('<button>')
+            var historyBtn = $('<p>')
             var movieLink = $('<a>')
             
             historyBtn.attr('class', 'historyBtn');
@@ -147,17 +132,16 @@ var apikey = "54e8fa38"
             
             movieLink.text(savedMovies[i]);  
         }
-    }
-    
+    }  
     listSearchHistory();
-    
+    //clears local storage
     function clearHistory() {
         localStorage.clear('movies');
         $('.histDiv').empty();
         location.reload();
     }
-    
-    $('#clear').on('click', function() {
+    //clear button event
+    $('#reset').on('click', function() {
         console.log('click');
         clearHistory();
     })
