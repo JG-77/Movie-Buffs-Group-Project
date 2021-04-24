@@ -3,7 +3,7 @@ body {
 }
 
 header {
-    background-color:blue;
+    background-color:rgb(136, 136, 136);
     height: 100px;
     color: white;
     font-size: 30px;
@@ -32,6 +32,7 @@ form {
 
 .historyBtn {
 color: white;
+background-color: blue;
 margin-top: 3px;
 margin-bottom: 3px;
 margin-left: 3px;
