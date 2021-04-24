@@ -40,4 +40,4 @@ Javascript
 * Function for displaying search history from local storage on page refresh 
 * Function and event for clearing history
 
-![Webpage Preview](assets\Project-Movie-Buffs-Screenshot.png)
+![Webpage Preview](https://user-images.githubusercontent.com/76461629/115973050-17591400-a507-11eb-9f57-489c66381a61.png)
