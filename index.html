@@ -5,24 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>OMDb API test</title>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    <title>Movie Buffs</title>
+    <!-- <style>
+        background-image: url('photo.jpg')
+    </style> -->
+
+    <!-- <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css"> -->
     <link rel="stylesheet" href="assets\css\style.css"/>
 </head>
 <body>
     
     <div class="contaier">
-        <h1 class="text-center mt-5">OMDb API test</h1>
+        <h1 class="text-center mt-5">Welcome to Movie Buffs</h1>
     </div>
     <form id="movieForm" autocomplete="off">
         <div class="form-group">
-            <lable for="Movie">Search</lable>
-            <input class="form-control" type="text" id="movie" placeholder="Type Movie title...">
+            
+            <input class="form-control" type="text" id="movie" placeholder="Type in a Movie Title...">
         </div>
         <div class="form-group">
             <button class="btn.btn-danger btn-block">
                 Search
             </button>
+            <label for="Movie">Search</label>
         </div>
     </form>
 
@@ -33,10 +39,11 @@
     <div id="result"></div>
 
 </body>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="sweetalert2.all.min.js"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="sweetalert2.all.min.js"></script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="assets\js\script.js"></script> 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="assets/js/script.js"></script> 
 
 </html>
