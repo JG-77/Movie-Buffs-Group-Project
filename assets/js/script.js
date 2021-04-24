@@ -54,9 +54,6 @@ var apikey = "54e8fa38"
 
                     movieLink.text(savedMovies[i]);
 
-                    /*for (let i=1; i<savedMovies.length; i++) {
-                        if (savedMovies[i] === savedMovies[i-1]) savedMovies.splice(i,1);
-                    }*/
                 }  
                 var i;
                 for(var i =0; i < data.Search.length; i++){
@@ -69,7 +66,7 @@ var apikey = "54e8fa38"
     
                     <div class="result">
                     
-                    <img width="300" height="300" src="${poster}"/>
+                    <img style="float:left" width="300" height="300" src="${poster}"/>
                     <h2>${movieTitle}</h2>
                     <h2>${type}</h2>
                     <h2>${year}</h2>
@@ -83,54 +80,54 @@ var apikey = "54e8fa38"
                 }
 
             } 
-
-        }) 
-
+        })
         /*.then(function () { //movie poster open
             $(".movieImg").on("click", function (e) {
               var movieName = $(this).siblings(".movie-title").text();
               console.log(movieName);
               getWiki(movieName);
             });
-
           });*/
-        //});
-        //function getWiki(movie) {
-           // console.log(getWiki)
-        //function getWiki(movie)
 
-         $.ajax({
-            method:'GET',
-            url:urlWiki+movie,
-            success:function(data){
-                console.log(data.query.search);
-                
-                var i;
-                for(var i =0; i < 5; i++){
-                    var snippet = data.query.search[i].snippet
-                    var wikiTitle = data.query.search[i].title
-                    var wikiURL = encodeURI(`https://en.wikipedia.org/wiki/${wikiTitle}`)
-
-                    result = `
-    
-                    <div class="result2">
-                    
-                    <h2>${wikiTitle}</h2>
-                    <h2>${snippet}</h2>
-                    <a href="${wikiURL}" target="_blank" rel="noopener">${wikiTitle}</a>
-
-                    
-                     </div>
-    
-                     `;
-                    
-                    $("#main2").append(result)
-                }
+                //function getWiki(movie) {
+              // console.log(getWiki)
+              //function getWiki(movie)
+              $.ajax({
+                  method:'GET',
+                  url:urlWiki+movie,
+                  success:function(data){
+                      console.log(data.query.search);
+                      
+                    var i;
+                    for(var i =0; i < 5; i++){
+                          var snippet = data.query.search[i].snippet
+                          var wikiTitle = data.query.search[i].title
+                          var wikiURL = encodeURI(`https://en.wikipedia.org/wiki/${wikiTitle}`)
+                          
+                          result = `
+                          
+                          <div class="result2">
+                          
+                          <h2>${wikiTitle}</h2>
+                          <h2>${snippet}</h2>
+                          <a href="${wikiURL}" target="_blank" rel="noopener">${wikiTitle}</a>
+                          
+                          
+                          </div>
+                          
+                          `;
+                          
+                          $("#main2").append(result)
+                        }
                         
-            }
-            
-        });
+                    }
+
+                    
+                });
     });
+    
+
+
     
 
     
@@ -147,12 +144,7 @@ var apikey = "54e8fa38"
             historyBtn.append(movieLink);
             
             movieLink.text(savedMovies[i]);  
-
-           /* for (let i=1; i<savedMovies.length; i++) {
-                if (savedMovies[i] === savedMovies[i-1]) savedMovies.splice(i,1);
-            }*/
         }
-
     }
     
     listSearchHistory();
