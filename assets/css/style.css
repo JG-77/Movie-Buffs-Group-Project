@@ -78,7 +78,7 @@ margin-left: 3px;
     color: white;
     margin-top: 2px;
 }
-
+/* Media query styling*/
 @media screen and (min-width: 768px) {
     form {
         border: solid;
