@@ -6,7 +6,7 @@ var historyDiv = $('<div>');
 historyDiv.attr('class', 'histDiv');
 var apikey = "54e8fa38"
 
-    $("#movieForm").submit(function(event){
+    $("#searchBtn").on("click", function(event){
         event.preventDefault()
 
 
@@ -14,7 +14,7 @@ var apikey = "54e8fa38"
 
         $("#main2").empty()
 
-        var movie = $("#movie").val()
+        var movie = $("#movie").val().toLowerCase()
 
         if (movie === '') {
             Swal.fire({
@@ -37,11 +37,14 @@ var apikey = "54e8fa38"
             success:function(data){
                 console.log(data.Search);
                 //local storage for search input
+                if(!savedMovies.includes(movie)) {
+                //return false;
                 savedMovies.push(movie);
                 localStorage.setItem('movies', JSON.stringify(savedMovies));
-               
+                
+                }
                 $('.histDiv').empty();
-
+ 
                 //for loop for creating history buttons
                 for(i = 0; i < savedMovies.length; i++) {
                     var historyBtn = $('<button>')

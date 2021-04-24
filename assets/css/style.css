@@ -78,3 +78,43 @@ margin-left: 3px;
     color: white;
 
 }
+
+@media screen and (min-width: 768px) {
+    form {
+        border: solid;
+        display: inline-block;
+        margin-top: 15px;
+        background-color: white;
+        padding: 3px;
+        margin: 15px 30% 15px 35%;
+        width: 35%;
+    
+    }
+}
+
+@media screen and (max-width: 767px) {
+    form {
+        border: solid;
+        display: inline-block;
+        margin-top: 15px;
+        background-color: white;
+        padding: 3px;
+        margin: 15px 30% 15px 35%;
+        width: 35%;
+    } 
+    #main {
+        display: block;
+        margin-left: 3px;
+        min-width: 54%;
+        max-width: 54%;
+        margin: 10px 45% 10px 30%;
+    }
+    #main2 {
+        float: right;
+        min-width: 45%;
+        display: inline-table;
+        margin-right: 3px;
+        margin-top: -5px;
+        margin: 10px 15% 10px 20%;
+    }
+}
