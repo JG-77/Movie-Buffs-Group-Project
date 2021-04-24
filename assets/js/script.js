@@ -79,16 +79,9 @@ var apikey = "54e8fa38"
 
                 }
 
-            } /*, error: function() {
-                console.log('error')
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Could not find movie title.',
-                  })
-            }*/ 
+            } 
         })
-        function getWiki(movie)
+        //function getWiki(movie)
         $.ajax({
             method:'GET',
             url:urlWiki+movie,
