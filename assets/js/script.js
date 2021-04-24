@@ -79,17 +79,18 @@ var apikey = "54e8fa38"
 
                 }
 
-            } /*, error: function() {
-                console.log('error')
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Could not find movie title.',
-                  })
-            }*/ 
-        })
-        function getWiki(movie)
-        $.ajax({
+            } 
+        }).then(function () { //movie poster open
+            $(".movieImg").on("click", function (e) {
+              var movieName = $(this).siblings(".movie-title").text();
+              console.log(movieName);
+              getWiki(movieName);
+            });
+          });
+        });
+        function getWiki(movie) {
+        //function getWiki(movie)
+         $.ajax({
             method:'GET',
             url:urlWiki+movie,
             success:function(data){
@@ -118,8 +119,11 @@ var apikey = "54e8fa38"
                 }
 
             }
+        
         })
-    })
+        };
+    
+
     
     function listSearchHistory() {
         for(i = 0; i < savedMovies.length; i++) {
@@ -149,4 +153,5 @@ var apikey = "54e8fa38"
         console.log('click');
         clearHistory();
     })
-})
+
+});
