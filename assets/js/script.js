@@ -3,7 +3,6 @@ $(document).ready(function(){
 var savedMovies = JSON.parse(localStorage.getItem('movies')) || [];
 var formEl = $('#movieForm');
 var historyDiv = $('<div>');
-//var clearBtn = $('#clear');
 historyDiv.attr('class', 'histDiv');
 var apikey = "54e8fa38"
 
@@ -89,7 +88,7 @@ var apikey = "54e8fa38"
                   })
             }*/ 
         })
-
+        function getWiki(movie)
         $.ajax({
             method:'GET',
             url:urlWiki+movie,
