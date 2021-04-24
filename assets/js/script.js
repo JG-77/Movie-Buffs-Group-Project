@@ -83,17 +83,22 @@ var apikey = "54e8fa38"
                 }
 
             } 
+
         }) 
+
         /*.then(function () { //movie poster open
             $(".movieImg").on("click", function (e) {
               var movieName = $(this).siblings(".movie-title").text();
               console.log(movieName);
               getWiki(movieName);
             });
-          });
-        });*/
+
+          });*/
+        });
         //function getWiki(movie) {
-        
+           // console.log(getWiki)
+        //function getWiki(movie)
+
          $.ajax({
             method:'GET',
             url:urlWiki+movie,
@@ -125,8 +130,8 @@ var apikey = "54e8fa38"
             }
         
         })
-    });
-    //};
+
+        ;
     
 
     
