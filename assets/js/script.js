@@ -91,7 +91,7 @@ var apikey = "54e8fa38"
               getWiki(movieName);
             });
           });*/
-        });
+        //});
         //function getWiki(movie) {
            // console.log(getWiki)
         //function getWiki(movie)
@@ -122,11 +122,11 @@ var apikey = "54e8fa38"
                     
                     $("#main2").append(result)
                 }
-
+                        
             }
-        
-        })
-        ;
+            
+        });
+    });
     
 
     
