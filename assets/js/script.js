@@ -27,12 +27,36 @@ $(document).ready(function () {
     var urlWiki =
       "https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=";
 
+    var result = " ";
+
+    var urlMovie = "http://www.omdbapi.com/?apikey=" + apikey;
+
+    var urlWiki =
+      "https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=";
+
     $.ajax({
       method: "GET",
       url: urlMovie + "&s=" + movie,
       success: function (data) {
         console.log(data.Search);
+        //local storage for search input
+        savedMovies.push(movie);
+        localStorage.setItem("movies", JSON.stringify(savedMovies));
 
+        $(".histDiv").empty();
+
+        //for loop for creating history buttons
+        for (i = 0; i < savedMovies.length; i++) {
+          var historyBtn = $("<button>");
+          var movieLink = $("<a>");
+
+          historyBtn.attr("class", "historyBtn");
+          formEl.append(historyDiv);
+          historyDiv.append(historyBtn);
+          historyBtn.append(movieLink);
+
+          movieLink.text(savedMovies[i]);
+        }
         var i;
         for (var i = 0; i < data.Search.length; i++) {
           var poster = data.Search[i].Poster;
@@ -44,8 +68,8 @@ $(document).ready(function () {
     
                     <div class="result">
                     
-                    <img width="300" class="movieImg" height="300" src="${poster}"/>
-                    <h2 id="movie-title">${movieTitle}</h2>
+                    <img style="float:left" width="300" height="300" src="${poster}"/>
+                    <h2>${movieTitle}</h2>
                     <h2>${type}</h2>
                     <h2>${year}</h2>
                     
@@ -56,16 +80,18 @@ $(document).ready(function () {
           $("#main").append(result);
         }
       },
-    }).then(function () {
-      $(".movieImg").on("click", function (e) {
-        var movieName = $(this).siblings(".movie-title").text();
-        console.log(movieName);
-        getWiki(movieName);
-      });
     });
-  });
+    /*.then(function () { //movie poster open
+            $(".movieImg").on("click", function (e) {
+              var movieName = $(this).siblings(".movie-title").text();
+              console.log(movieName);
+              getWiki(movieName);
+            });
+          });*/
 
-  function getWiki(movie) {
+    //function getWiki(movie) {
+    // console.log(getWiki)
+    //function getWiki(movie)
     $.ajax({
       method: "GET",
       url: urlWiki + movie,
@@ -79,22 +105,50 @@ $(document).ready(function () {
           var wikiURL = encodeURI(`https://en.wikipedia.org/wiki/${wikiTitle}`);
 
           result = `
-  
-                  <div class="result2">
-                  
-                  <h2>${wikiTitle}</h2>
-                  <h2>${snippet}</h2>
-                  <a href="${wikiURL}" target="_blank" rel="no opener">${wikiTitle}</a>
-
-                  
-                  
-                   </div>
-  
-                   `;
+                          
+                          <div class="result2">
+                          
+                          <h2>${wikiTitle}</h2>
+                          <h2>${snippet}</h2>
+                          <a href="${wikiURL}" target="_blank" rel="noopener">${wikiTitle}</a>
+                          
+                          
+                          </div>
+                          
+                          `;
 
           $("#main2").append(result);
         }
       },
     });
+  });
+
+  function listSearchHistory() {
+    for (i = 0; i < savedMovies.length; i++) {
+      console.log(savedMovies);
+
+      var historyBtn = $("<button>");
+      var movieLink = $("<a>");
+
+      historyBtn.attr("class", "historyBtn");
+      formEl.append(historyDiv);
+      historyDiv.append(historyBtn);
+      historyBtn.append(movieLink);
+
+      movieLink.text(savedMovies[i]);
+    }
   }
+
+  listSearchHistory();
+
+  function clearHistory() {
+    localStorage.clear("movies");
+    $(".histDiv").empty();
+    location.reload();
+  }
+
+  $("#clear").on("click", function () {
+    console.log("click");
+    clearHistory();
+  });
 });
