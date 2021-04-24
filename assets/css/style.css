@@ -1,43 +1,67 @@
-/*.result {
+/*header {
+    background-color:blue;
+    height: 100px;
+    color: white;
+   font-size: 30px;
+    margin: -10px;
+    padding: 10px;
+}
+
+.histDiv {
+    display: inline;
+}
+
+.h
+
+.result {
     display: inline-block;
     border: solid;
-    padding: 10px;
+    padding: 25px;
     text-align: center;
+    word-wrap: word-break;
     margin: 5px;
-    }
+}
 
-    
+.movie-title {
+    word-wrap: word-break;
+}
 
-    .form-group {
-        display: inline;
-    }*/
+h1 {
+    text-align: center;
+}
 
-    .histDiv {
-        display: inline;
-    }
+h2 {
+    font-size: 25px;
+}*/
 
-    .result {
-        display: inline-block;
-        border: solid;
-        padding: 25px;
-        text-align: center;
-        word-wrap: word-break;
-        margin: 5px;
-      }
-      .movie-title {
-        word-wrap: word-break;
-      }
-      h1 {
-        text-align: center;
-      }
-      h2 {
-        font-size: 25px;
-      }
+form {
+    border: solid;
+    display: inline-block;
+    margin-top: 15px;
+}
 
-      form {
-        border: solid;
-        display: inline-block;
-    }
-    /* body {
+.historyBtn {
+color: white;
+}
+
+.result {
+    display: inline-block;
+    border: solid;
+    padding: 25px;
+    text-align: center;
+    word-wrap: word-break;
+    margin: 5px;
+}
+
+#main {
+    display: inline-grid;
+}
+/* body {
         background-image: url(https://mcdn.wallpapersafari.com/medium/96/16/XdOtmz.jpeg);
       }*/
+
+#clear {
+    background: rgb(66, 184, 221); 
+    color: white;
+
+}
