@@ -6,15 +6,38 @@
     margin: 5px;
     }
 
-    form {
-        border: solid;
-        display: inline-block;
-    }
+    
 
     .form-group {
         display: inline;
+    }*/
+
+    .histDiv {
+        display: inline;
     }
 
-   /* .histDiv {
-        display: inline;
-    }*/
+    .result {
+        display: inline-block;
+        border: solid;
+        padding: 25px;
+        text-align: center;
+        word-wrap: word-break;
+        margin: 5px;
+      }
+      .movie-title {
+        word-wrap: word-break;
+      }
+      h1 {
+        text-align: center;
+      }
+      h2 {
+        font-size: 25px;
+      }
+
+      form {
+        border: solid;
+        display: inline-block;
+    }
+    /* body {
+        background-image: url(https://mcdn.wallpapersafari.com/medium/96/16/XdOtmz.jpeg);
+      }*/
