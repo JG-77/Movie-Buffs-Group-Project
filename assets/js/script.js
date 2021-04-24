@@ -1,7 +1,10 @@
-
 $(document).ready(function(){
 
-    var apikey = "54e8fa38"
+var savedMovies = JSON.parse(localStorage.getItem('movies')) || [];
+var formEl = $('#movieForm');
+var historyDiv = $('<div>');
+historyDiv.attr('class', 'histDiv');
+var apikey = "54e8fa38"
 
     $("#movieForm").submit(function(event){
         event.preventDefault()
@@ -33,7 +36,25 @@ $(document).ready(function(){
             url:urlMovie+"&s="+movie,
             success:function(data){
                 console.log(data.Search);
-                
+                //local storage for search input
+                savedMovies.push(movie);
+                localStorage.setItem('movies', JSON.stringify(savedMovies));
+               
+                $('.histDiv').empty();
+
+                //for loop for creating history buttons
+                for(i = 0; i < savedMovies.length; i++) {
+                    var historyBtn = $('<button>')
+                    var movieLink = $('<a>')
+
+                    historyBtn.attr('class', 'historyBtn');
+                    formEl.append(historyDiv);
+                    historyDiv.append(historyBtn);
+                    historyBtn.append(movieLink);
+
+                    movieLink.text(savedMovies[i]);
+
+                }  
                 var i;
                 for(var i =0; i < data.Search.length; i++){
                     var poster = data.Search[i].Poster
@@ -58,9 +79,16 @@ $(document).ready(function(){
 
                 }
 
-            }
+            } /*, error: function() {
+                console.log('error')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Could not find movie title.',
+                  })
+            }*/ 
         })
-
+        function getWiki(movie)
         $.ajax({
             method:'GET',
             url:urlWiki+movie,
@@ -87,10 +115,38 @@ $(document).ready(function(){
                      `;
                     
                     $("#main2").append(result)
-
                 }
 
             }
         })
+    })
+    
+    function listSearchHistory() {
+        for(i = 0; i < savedMovies.length; i++) {
+            console.log(savedMovies)
+            
+            var historyBtn = $('<button>')
+            var movieLink = $('<a>')
+            
+            historyBtn.attr('class', 'historyBtn');
+            formEl.append(historyDiv);
+            historyDiv.append(historyBtn);
+            historyBtn.append(movieLink);
+            
+            movieLink.text(savedMovies[i]);  
+        }
+    }
+    
+    listSearchHistory();
+    
+    function clearHistory() {
+        localStorage.clear('movies');
+        $('.histDiv').empty();
+        location.reload();
+    }
+    
+    $('#clear').on('click', function() {
+        console.log('click');
+        clearHistory();
     })
 })

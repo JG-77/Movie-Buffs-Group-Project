@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>OMDb API test</title>
+    <title>Movie-Buffs</title>
     <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="assets\css\style.css"/>
 </head>
 <body>
     
     <div class="contaier">
-        <h1 class="text-center mt-5">OMDb API test</h1>
+        <h1 class="text-center mt-5">Movie Buffs</h1>
     </div>
     <form id="movieForm" autocomplete="off">
         <div class="form-group">
@@ -20,12 +20,18 @@
             <input class="form-control" type="text" id="movie" placeholder="Type Movie title...">
         </div>
         <div class="form-group">
-            <button class="btn.btn-danger btn-block">
+            <button id='searchBtn' class="btn.btn-danger btn-block">
                 Search
             </button>
         </div>
+        
     </form>
-
+    <!--Clear button -->
+    <div class="form-group">
+        <button  id='clear' class="btn.btn-danger btn-block">
+            Clear
+        </button>
+    </div>
     <div id="main"></div>
 
     <div id="main2"></div>
