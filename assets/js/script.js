@@ -54,6 +54,9 @@ var apikey = "54e8fa38"
 
                     movieLink.text(savedMovies[i]);
 
+                    /*for (let i=1; i<savedMovies.length; i++) {
+                        if (savedMovies[i] === savedMovies[i-1]) savedMovies.splice(i,1);
+                    }*/
                 }  
                 var i;
                 for(var i =0; i < data.Search.length; i++){
@@ -66,7 +69,7 @@ var apikey = "54e8fa38"
     
                     <div class="result">
                     
-                    <img style="float:left" width="300" height="300" src="${poster}"/>
+                    <img width="300" height="300" src="${poster}"/>
                     <h2>${movieTitle}</h2>
                     <h2>${type}</h2>
                     <h2>${year}</h2>
@@ -140,7 +143,12 @@ var apikey = "54e8fa38"
             historyBtn.append(movieLink);
             
             movieLink.text(savedMovies[i]);  
+
+           /* for (let i=1; i<savedMovies.length; i++) {
+                if (savedMovies[i] === savedMovies[i-1]) savedMovies.splice(i,1);
+            }*/
         }
+
     }
     
     listSearchHistory();
